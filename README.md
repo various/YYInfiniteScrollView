@@ -3,7 +3,7 @@ YYInfiniteScrollView
 
 Overview
 --------
-YYInfiniteScrollView is a subclass of UIView. It contains an endlessly scrollable UIScrollView, and you can click the subview on the scrollview.
+YYInfiniteScrollView is a subclass of UIView. It contains an endlessly scrollable UIScrollView, and you can click the subview on the scrollview. Some of the function get inspiration from InfinitePagingView.
 
 
 Features
@@ -93,6 +93,12 @@ YYInfiniteScrollViewDelegate Protocols
 ```
 Tells the delegate when the scrollview view is about to start scrolling the content.
 
+
+
+```Objective-C
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didClickIndex:(int)index;
+```
+Tells the delegate which subview the user click on content view within the receiver.
 -
 
 ```Objective-C
