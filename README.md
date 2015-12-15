@@ -3,7 +3,7 @@ YYInfiniteScrollView
 
 Overview
 --------
-YYInfiniteScrollView is a subclass of UIView. It contains an endlessly scrollable UIScrollView, and you can click the subview on the scrollview. Some of the function get inspiration from InfinitePagingView.
+YYInfiniteScrollView is a subclass of UIView. It contains an endlessly scrollable UIScrollView, and you can click the subview on the scrollview. Some of the function get inspiration from https://github.com/caesarcat/InfinitePagingView.
 
 
 Features
