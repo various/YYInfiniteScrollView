@@ -12,5 +12,9 @@
 @interface ViewController : UIViewController<YYInfiniteScrollViewDelegate>
 
 @property  (nonatomic, strong) YYInfiniteScrollView *infiniteScrollView;
+
+@property (nonatomic, strong) NSTimer *timer;
+
+
 @end
 

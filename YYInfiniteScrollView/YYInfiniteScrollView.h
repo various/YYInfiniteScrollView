@@ -45,7 +45,7 @@
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didScroll:(UIScrollView *)scrollView;
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didEndDragging:(UIScrollView *)scrollView;
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView willBeginDecelerating:(UIScrollView *)scrollView;
-- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didEndDecelerating:(UIScrollView *)scrollView atPageIndex:(NSInteger)pageIndex;
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didEndDecelerating:(UIScrollView *)scrollView ;
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didClickIndex:(int)index;
 @end
 

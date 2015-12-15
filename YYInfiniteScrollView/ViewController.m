@@ -19,7 +19,6 @@
     [super viewDidLoad];
     self.title = @"YYInfiniteScrollView";
     self.infiniteScrollView = [[YYInfiniteScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 260) contentSpacing:10];
-    self.infiniteScrollView.backgroundColor = [UIColor whiteColor];
     self.infiniteScrollView.delegate = self;
     self.infiniteScrollView.pageSize = CGSizeMake(535, 260);
     NSMutableArray *imageViews = [[NSMutableArray alloc] init];
@@ -40,7 +39,17 @@
     }
     [self.infiniteScrollView addPageViews:imageViews];
     [self.view addSubview:self.infiniteScrollView];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollPageView) userInfo:nil repeats:YES];
+    [self.timer setFireDate:[NSDate distantPast]];
+
 }
+
+- (void)scrollPageView{
+    [self.infiniteScrollView scrollToPreviousPage];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
