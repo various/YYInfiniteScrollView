@@ -88,6 +88,12 @@ Scroll to the next page.
 YYInfiniteScrollViewDelegate Protocols
 -
 
+```Objective-C
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didClickIndex:(int)index;
+```
+Tells the delegate when the paging view is cilcked.
+
+-
 
 ```Objective-C
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView willBeginDragging:(UIScrollView *)scrollView;
