@@ -87,6 +87,11 @@ Scroll to the next page.
 
 YYInfiniteScrollViewDelegate Protocols
 -
+```Objective-C
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didClickIndex:(int)index;
+```
+Tells the delegate which subview the user click on content view within the receiver.
+-
 
 ```Objective-C
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView willBeginDragging:(UIScrollView *)scrollView;
@@ -95,16 +100,36 @@ Tells the delegate when the scrollview view is about to start scrolling the cont
 
 
 
-```Objective-C
-- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didClickIndex:(int)index;
-```
-Tells the delegate which subview the user click on content view within the receiver.
--
 
 ```Objective-C
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didScroll:(UIScrollView *)scrollView;
 ```
 Tells the delegate when the user scrolls the content view within the receiver.
+
+
+
+-
+
+```Objective-C
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didEndDragging:(UIScrollView *)scrollView;
+```
+Tells the delegate when dragging ended in the paging view.
+
+
+-
+
+```Objective-C
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView willBeginDecelerating:(UIScrollView *)scrollView;
+```
+
+Tells the delegate that the paging view is starting to decelerate the scrolling movement.
+
+-
+
+```Objective-C
+- (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didEndDecelerating:(UIScrollView *)scrollView ;
+```
+Tells the delegate that the scroll view has ended decelerating the scrolling movement.
 
 -
 
