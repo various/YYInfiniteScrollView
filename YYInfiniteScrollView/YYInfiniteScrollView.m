@@ -1,13 +1,44 @@
+//
+//  YYInfiniteScrollView.m
+//  YYInfiniteScrollView
+//
+//  Created by various on 15/12/14.
+//
+
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2015 various
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
 
 
 #import "YYInfiniteScrollView.h"
 
-#define ScrollViewContentSpacing 10
 
 @interface YYInfiniteScrollView (){
     UIScrollView *_innerScrollView;
     NSMutableArray *_pageViews;
     CGFloat _previousScrollViewOffsetX;
+    float _contentSpacing;
+
 }
 @end
 
@@ -15,10 +46,11 @@
 @implementation YYInfiniteScrollView
 
 
-- (void)setFrame:(CGRect)frame
-{
-    [super setFrame:frame];
-    if (nil == _innerScrollView) {
+- (id)initWithFrame:(CGRect)frame  contentSpacing:(float)contentSpacing {
+    self = [super init];
+    if (self) {
+        self.frame = frame;
+        _contentSpacing = contentSpacing;
         self.userInteractionEnabled = YES;
         self.clipsToBounds = YES;
         CGRect bounds = CGRectZero;
@@ -36,14 +68,20 @@
         _innerScrollView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_innerScrollView];
         UITapGestureRecognizer *singleFingerOne = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                      action:@selector(handleSingleFingerEvent:)];
+                                                                                          action:@selector(handleSingleFingerEvent:)];
         singleFingerOne.numberOfTouchesRequired = 1;
         singleFingerOne.numberOfTapsRequired = 1;
         singleFingerOne.delegate = self;
         [self addGestureRecognizer:singleFingerOne];
-//        self.pageSize = frame.size;
+
     }
+    return self;
 }
+
+- (void)scrollPageView{
+    
+}
+
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)tapRecognizer{
     int clickIndex = 0;
@@ -90,8 +128,7 @@
 
 - (void)dealloc
 {
-    [self.timer invalidate];
-    self.timer = nil;
+
     _innerScrollView.delegate = nil;
 }
 
@@ -145,7 +182,7 @@
 }
 
 - (void)setPageSize:(CGSize)pageSize{
-    _pageSize = CGSizeMake(pageSize.width + ScrollViewContentSpacing, pageSize.height);
+    _pageSize = CGSizeMake(pageSize.width + _contentSpacing, pageSize.height);
 }
 
 #pragma mark - Private methods
@@ -153,7 +190,7 @@
 {
     CGFloat left_margin = (self.frame.size.width - _pageSize.width) / 2;
     _innerScrollView.frame = CGRectMake(left_margin, 0.f, _pageSize.width , self.frame.size.height);
-    _innerScrollView.contentSize = CGSizeMake(_pageViews.count * _innerScrollView.frame.size.width + (_pageViews.count - 1) * ScrollViewContentSpacing, self.frame.size.height);
+    _innerScrollView.contentSize = CGSizeMake(_pageViews.count * _innerScrollView.frame.size.width + (_pageViews.count - 1) * _contentSpacing, self.frame.size.height);
     for (int idx = 0; idx < _pageViews.count  ; idx++) {
         UIView *pageView  = [_pageViews objectAtIndex:idx];
         pageView.center = CGPointMake((idx - 2) * (_innerScrollView.frame.size.width) + (_innerScrollView.frame.size.width / 2) , _innerScrollView.center.y);

@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"YYInfiniteScrollView";
-    self.infiniteScrollView = [[YYInfiniteScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 260)];
+    self.infiniteScrollView = [[YYInfiniteScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 260) contentSpacing:10];
     self.infiniteScrollView.backgroundColor = [UIColor whiteColor];
     self.infiniteScrollView.delegate = self;
     self.infiniteScrollView.pageSize = CGSizeMake(535, 260);
@@ -50,7 +50,7 @@
 #pragma mark YYInfiniteScrollViewDelegate
 - (void)infiniteScrollView:(YYInfiniteScrollView *)infiniteScrollView didClickIndex:(int)index{
     DetailViewController *detail = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-    detail.imageName = [NSString stringWithFormat:@"page%d.jpg", index];
+    detail.imageName = [NSString stringWithFormat:@"page%d.jpg", index + 1];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
