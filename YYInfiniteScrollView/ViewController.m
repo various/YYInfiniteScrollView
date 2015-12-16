@@ -15,6 +15,11 @@
 
 @implementation ViewController
 
+- (void)dealloc{
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"YYInfiniteScrollView";
